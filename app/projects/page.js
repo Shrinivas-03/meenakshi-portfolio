@@ -18,8 +18,8 @@ const projects = [
       "Implemented NLP pipelines to analyze symptoms and generate personalized health suggestions.",
       "Designed a conversational chatbot for real-time interaction using OpenAI API.",
       "Developed secure backend with Flask + Supabase for storing medical records.",
-      "Implemented user analytics to track engagement and improve prediction accuracy.",
-      "Built as an open-source healthcare assistant accessible to the public.",
+      "Implemented analytics to track engagement and improve model accuracy.",
+      "Released as an open-source healthcare assistant for public use.",
     ],
   },
 
@@ -35,13 +35,13 @@ const projects = [
       "Google Analytics",
     ],
     details: [
-      "Developed a marketplace platform enabling direct farmer-to-customer sales.",
-      "Reduced middle-men cost by 30% and increased farmer profit margins.",
-      "Built multi-role authentication (Farmer, Customer, Admin).",
-      "Created product management dashboard with inventory + order tracking.",
-      "Integrated real-time data sync using Supabase.",
-      "Achieved 99.5% uptime after deployment on Render.com.",
-      "Enhanced UI/UX based on analytics insights to improve user flow.",
+      "Developed a marketplace platform for direct farmer-to-customer transactions.",
+      "Reduced middlemen involvement by 30%, improving farmer earnings.",
+      "Built a role-based authentication system (Farmer, Customer, Admin).",
+      "Designed dashboards for order tracking and product inventory.",
+      "Integrated live sync using Supabase.",
+      "Achieved 99.5% uptime on Render deployment.",
+      "Enhanced UI based on analytics insights to improve user flow.",
     ],
   },
 
@@ -57,23 +57,24 @@ const projects = [
       "NLP",
     ],
     details: [
-      "Developed a real-time AI news summarizer using transformer-based NLP models.",
-      "Summarizes long news articles into easy-to-read bullet points.",
-      "Implemented user authentication with OTP verification and password hashing.",
-      "Added bookmarking, saved articles, and topic-based categorization.",
-      "Integrated live news using REST API and created a responsive Tailwind UI.",
-      "Optimized caching and API calls to improve user session speed.",
+      "Built an AI-powered real-time news summarizer using transformer models.",
+      "Condenses long articles into readable bullet points.",
+      "Implemented OTP login and secure password hashing.",
+      "Added bookmarking, save-later, and topic filters.",
+      "Integrated live news via REST API and optimized UI for responsiveness.",
+      "Reduced load time by optimizing caching and API frequency.",
     ],
   },
 ];
 
 export default function Projects() {
   return (
-    <main className="px-6 py-24 max-w-6xl mx-auto">
+    <main className="px-4 sm:px-6 md:px-10 py-24 max-w-7xl mx-auto">
       {/* PAGE TITLE */}
       <h1
         className="
-          text-6xl font-extrabold mb-16 tracking-tight text-center
+          text-4xl sm:text-5xl md:text-6xl font-extrabold mb-12
+          tracking-tight text-center
           bg-gradient-to-r from-cyan-300 via-purple-400 to-cyan-300
           text-transparent bg-clip-text
           drop-shadow-[0_0_12px_rgba(0,0,0,0.4)]
@@ -84,7 +85,7 @@ export default function Projects() {
       </h1>
 
       {/* PROJECT GRID */}
-      <div className="grid md:grid-cols-2 gap-10 lg:grid-cols-2">
+      <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
         {projects.map((p, i) => (
           <div
             key={i}
@@ -95,14 +96,17 @@ export default function Projects() {
               border border-purple-400/20
               shadow-xl
               hover:shadow-cyan-400/20
-              hover:scale-[1.03]
-              transition-transform duration-300
+              hover:scale-[1.02]
+              transition-all duration-300
+              break-words
             "
             data-aos="zoom-in"
             data-aos-delay={i * 150}
           >
             {/* TITLE */}
-            <h2 className="text-2xl font-bold mb-3 text-cyan-300">{p.title}</h2>
+            <h2 className="text-xl sm:text-2xl font-bold mb-3 text-cyan-300">
+              {p.title}
+            </h2>
 
             {/* TECH BADGES */}
             <div className="flex flex-wrap gap-2 mb-4">
@@ -110,7 +114,7 @@ export default function Projects() {
                 <span
                   key={index}
                   className="
-                    px-3 py-1 text-sm
+                    px-2 py-1 sm:px-3 sm:py-1 text-xs sm:text-sm
                     bg-purple-800/40 border border-purple-500/30
                     text-purple-200 rounded-full
                     backdrop-blur-md
@@ -122,7 +126,14 @@ export default function Projects() {
             </div>
 
             {/* DETAILS LIST */}
-            <ul className="list-disc ml-5 mt-3 text-gray-700 dark:text-gray-300 text-base space-y-2">
+            <ul
+              className="
+                list-disc ml-4 sm:ml-5 mt-3
+                text-gray-700 dark:text-gray-300
+                text-sm sm:text-base
+                space-y-2
+              "
+            >
               {p.details.map((point, idx) => (
                 <li key={idx}>{point}</li>
               ))}

@@ -1,4 +1,10 @@
+"use client";
+
+import { useState } from "react";
+
 export default function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <nav
       className="
@@ -15,7 +21,6 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         {/* LOGO + NAME */}
         <div className="flex items-center gap-3">
-          {/* PROFILE IMAGE LOGO */}
           <img
             src="/profile.png"
             alt="Profile Logo"
@@ -26,7 +31,6 @@ export default function Navbar() {
             "
           />
 
-          {/* NAME */}
           <h1
             className="
               text-2xl font-bold tracking-wide
@@ -38,7 +42,7 @@ export default function Navbar() {
           </h1>
         </div>
 
-        {/* NAV LINKS */}
+        {/* DESKTOP NAV LINKS */}
         <div className="hidden md:flex items-center gap-10 text-lg font-medium">
           {[
             { name: "Home", link: "/" },
@@ -54,8 +58,6 @@ export default function Navbar() {
               "
             >
               {nav.name}
-
-              {/* UNDERLINE HOVER ANIMATION */}
               <span
                 className="
                   absolute left-0 -bottom-1 w-0 h-[2px]
@@ -67,7 +69,46 @@ export default function Navbar() {
             </a>
           ))}
         </div>
+
+        {/* HAMBURGER ICON (MOBILE) */}
+        <button
+          className="md:hidden text-3xl focus:outline-none"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          {menuOpen ? "✖" : "☰"}
+        </button>
       </div>
+
+      {/* MOBILE MENU */}
+      {menuOpen && (
+        <div
+          className="
+            md:hidden mt-4 pb-4 space-y-4
+            bg-purple-950/80 backdrop-blur-xl
+            border-t border-purple-700/40
+            rounded-b-xl
+            animate-fadeIn
+          "
+        >
+          {[
+            { name: "Home", link: "/" },
+            { name: "About", link: "/about" },
+            { name: "Projects", link: "/projects" },
+          ].map((nav, i) => (
+            <a
+              key={i}
+              href={nav.link}
+              className="
+                block text-center py-2 text-lg
+                hover:text-cyan-300 transition
+              "
+              onClick={() => setMenuOpen(false)}
+            >
+              {nav.name}
+            </a>
+          ))}
+        </div>
+      )}
     </nav>
   );
 }
